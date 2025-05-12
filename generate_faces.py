@@ -35,43 +35,6 @@ def generate_shapes(num_imgs=1, exp_list=[1,2]):
 	path_gid = args.path_gid
 	path_gexp = args.path_gexp
 
-	with torch.no_grad(): #그래디언트 계산 비활성화mport yaml				#YAML: 설저파일로딩
-from train_gan3d import shape_GAN	#3D 형태 새성 GAN 모델
-import os				
-from test_gan3d import Test		#GAN 테스트 클래스
-import torch				#파이토치 사용하기
-
-from test_texture import test_texture	# 텍스쳐 생성함수
-from texture_model.progan_modules import Generator, Discriminator #GAN 기반 텍스쳐 생성기 판별기
-from texture_model.assets.texture_processing import add_tex# 
-from data.edit_obj import get_mtl
-import argparse				#argparse: 머신러닝에서 하이퍼 파라미터 쉽게 넘겨줄 수 있음.
-
-
-
-def generate_shapes(num_imgs=1, exp_list=[1,2]):
-	"""
- 	주어진 개수만큼 얼굴형태 생성후 저장
-   	이 함수에서 사용하는 `device` 및 `args` 인자는
-    	__main__ 영역에서 argparse로 파싱된 `args`와
-    	torch.device로 설정된 `device`를 전역(global)으로 참조합니다.
-  	:param num_imgs: 생성 얼굴 샘플개수
-   	:param exp_list: 표현 표정 인덱스 리스트
-  	"""
-	#설정파일 로드
-	with open("config.yml","r") as cfgfile:	
-		  cfg = yaml.safe_load(cfgfile)
-
-	#shape_GAN 객체 초기화
-	# 'device' : GPU or CPU 디바이스 설정. torch.device 객체.
-	# 'args' : argparse 전달된 모델 경로 등 실행 파라미터모음
-	gan = shape_GAN(cfg, device, args)	#device, args: 참고
-
-	#모델 저장 경로 인자 가져오기
-	path_d = args.path_decoder
-	path_gid = args.path_gid
-	path_gexp = args.path_gexp
-
 	with torch.no_grad(): #그래디언트 계산 비활성화(for inference)
 
 		  test = Test(gan, args)	#Test 클래스 인스턴스 생성
