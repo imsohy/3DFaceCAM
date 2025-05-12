@@ -1,3 +1,17 @@
+import os
+os.environ.pop("MPLBACKEND", None)
+
+import matplotlib
+matplotlib.use("Agg")
+"""
+Jupyter 노트북이나 Colab 환경에서는 matplotlib_inline.backend_inline라는 백엔드를 자동 설정합니다.
+
+하지만 일반 .py 스크립트를 CLI 또는 서버에서 실행하면 이 백엔드는 존재하지 않아 오류가 발생합니다.
+
+그래서 백엔드 설정을 안전한 "Agg"로 강제로 변경하는 것입니다.
+"""
+
+
 import numpy as np
 import random
 import torch
