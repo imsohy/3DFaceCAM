@@ -81,7 +81,7 @@ def generate_shapes(num_imgs=1, exp_list=[1,2]):
 		      #난수 z_id 새로 설정, 각기 다른 아이덴티티 설정
 		      test.set_z_id(torch.randn(1,20).to(device))
 	              #파읾명으로 i 사용, 옵션 3개에 대한 부울값 설정, exp_list에 표저 지정한거 넣기
-		      test.generate(str(i), intensities=True, save_obj=True, render=False, exp_list=exp_list)
+		      test.generate(str(i), intensities=True, save_obj=True, render=True, exp_list=exp_list)
 
 
 def generate_tex(num_imgs=1, exp_list=[1,2]):
