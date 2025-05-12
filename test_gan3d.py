@@ -83,7 +83,8 @@ class Test:
                     vertex_to_mesh(mesh_verts, count, subfolder)
             if render:
                 from shape_model.gan3d.renderer_pt3d import renderfaces
-                renderfaces(torch.stack(meshes).float(), self.face_v, subfolder+'.png',self.device)
+                renderfaces(torch.stack(meshes).float(), self.face_v, os.path.join(subfolder, 'rendered.png'), self.device)     #폴더 내부에 저장되게 수정
+                # renderfaces(torch.stack(meshes).float(), self.face_v, subfolder+'.png',self.device)
 
 
     def generate(self, filename, intensities=False, low=0, high=1.5, num_steps=15, exp_list=range(0,20), save_obj=True, render=False):
